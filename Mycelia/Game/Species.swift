@@ -27,7 +27,7 @@ struct Species: Codable, Identifiable, Hashable {
     let commonName: String
     let scientificName: String
     let biome: Biome
-    let substrate: String
+    let substrate: SubstrateType
     let rarity: Rarity
     let fruitTimeMinutes: Int
     let bioluminescent: Bool

@@ -48,7 +48,7 @@ struct SpeciesDetailView: View {
     private var statsGrid: some View {
         let cols = [GridItem(.flexible()), GridItem(.flexible())]
         return LazyVGrid(columns: cols, spacing: 18) {
-            stat(label: "Substrate", value: species.substrate.replacingOccurrences(of: "_", with: " "))
+            stat(label: "Substrate", value: species.substrate.displayName)
             stat(label: "Rarity",    value: species.rarity.displayName)
             stat(label: "Fruit time", value: "\(species.fruitTimeMinutes) min")
             stat(label: "Spores",     value: "+\(species.yieldSpores)")

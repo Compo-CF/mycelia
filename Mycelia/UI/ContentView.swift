@@ -1,26 +1,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var species: [Species] = []
+    @Environment(GameState.self) private var game
 
     var body: some View {
         TabView {
             ForestView()
-                .tabItem {
-                    Label("Forest", systemImage: "leaf")
-                }
+                .tabItem { Label("Forest", systemImage: "leaf") }
 
-            JournalView(species: species)
-                .tabItem {
-                    Label("Journal", systemImage: "book.closed")
-                }
-        }
-        .task {
-            species = SpeciesLoader.loadAll()
+            JournalView(species: game.species)
+                .tabItem { Label("Journal", systemImage: "book.closed") }
         }
     }
 }
 
 #Preview {
     ContentView()
+        .environment(GameState(species: SpeciesLoader.loadAll()))
 }
