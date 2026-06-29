@@ -57,7 +57,7 @@ struct MoriView: View {
                 .frame(width: size * 0.76, height: size * 0.96)
                 .offset(y: -size * 0.18)
 
-            stipe
+            StipeShape()
                 .fill(
                     RadialGradient(
                         colors: [Color.sporeDust, Color.oldLeaf],
@@ -99,19 +99,6 @@ struct MoriView: View {
         .mask(Ellipse())
     }
 
-    private func stipe(in rect: CGRect) -> Path {
-        Path { p in
-            let w = rect.width, h = rect.height
-            p.move(to: CGPoint(x: w * 0.1, y: 0))
-            p.addQuadCurve(to: CGPoint(x: w * 0.2, y: h),
-                           control: CGPoint(x: -w * 0.05, y: h * 0.55))
-            p.addLine(to: CGPoint(x: w * 0.8, y: h))
-            p.addQuadCurve(to: CGPoint(x: w * 0.9, y: 0),
-                           control: CGPoint(x: w * 1.05, y: h * 0.55))
-            p.closeSubpath()
-        }
-    }
-
     private var eyes: some View {
         HStack(spacing: size * 0.16) {
             eye
@@ -147,6 +134,21 @@ struct MoriView: View {
             }
             .stroke(Color.hollowBlack, lineWidth: 1.6)
             .frame(width: size * 0.10, height: size * 0.025)
+        }
+    }
+}
+
+private struct StipeShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        Path { p in
+            let w = rect.width, h = rect.height
+            p.move(to: CGPoint(x: w * 0.1, y: 0))
+            p.addQuadCurve(to: CGPoint(x: w * 0.2, y: h),
+                           control: CGPoint(x: -w * 0.05, y: h * 0.55))
+            p.addLine(to: CGPoint(x: w * 0.8, y: h))
+            p.addQuadCurve(to: CGPoint(x: w * 0.9, y: 0),
+                           control: CGPoint(x: w * 1.05, y: h * 0.55))
+            p.closeSubpath()
         }
     }
 }
