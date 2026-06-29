@@ -21,5 +21,17 @@ Mycelia/
 └── UI/           # SwiftUI views, atmospheric components
 ```
 
+## Build (MacInCloud or any macOS dev box)
+```sh
+./scripts/bootstrap.sh    # installs xcodegen, generates Mycelia.xcodeproj
+open Mycelia.xcodeproj    # build & run on simulator
+```
+
 ## Status
-Concept locked, scaffolding in progress. See [docs/DESIGN.md](docs/DESIGN.md).
+Concept locked. v0.1 ships:
+- [docs/DESIGN.md](docs/DESIGN.md) — pitch, tone, core loop, monetization
+- [docs/BIOMES.md](docs/BIOMES.md) — Forest Floor, Old Growth, Swamp
+- [docs/MORI.md](docs/MORI.md) — mascot character bible
+- [docs/SIMULATION.md](docs/SIMULATION.md) — substrate, mycelium, fruiting math
+- [design/identity.html](design/identity.html) — visual identity
+- SwiftUI shell: app boots, loads 20 real species from JSON, two-tab UI (Forest + Journal), Mori rendered in SwiftUI primitives
