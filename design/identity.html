@@ -1,0 +1,849 @@
+<title>Mycelia — Visual Identity</title>
+<style>
+  :root {
+    --hollow-black: #0B100D;
+    --moss-shadow: #1A211C;
+    --lichen: #2A332B;
+    --damp-bark: #3D2F25;
+    --old-leaf: #7A6B55;
+    --spore-dust: #D6C9A8;
+    --foxfire-teal: #5BC9B0;
+    --amanita: #8C2A2A;
+
+    --display: 'Cochin', 'Hoefler Text', 'Baskerville', 'Garamond', 'EB Garamond', serif;
+    --body: system-ui, -apple-system, 'Segoe UI', 'Avenir Next', sans-serif;
+    --mono: 'SF Mono', 'IBM Plex Mono', 'Consolas', ui-monospace, monospace;
+
+    --rule: #2A332B;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--hollow-black);
+    color: var(--spore-dust);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 0%, rgba(122, 107, 85, 0.08), transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(11, 16, 13, 0.6), transparent 50%);
+    z-index: 0;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 32px 120px;
+  }
+
+  .plate {
+    padding: 88px 0 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .plate:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--old-leaf);
+    margin: 0 0 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  h1.title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(64px, 12vw, 128px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+    color: var(--spore-dust);
+    text-wrap: balance;
+    font-style: italic;
+  }
+
+  .latin {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--old-leaf);
+    font-size: 18px;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    color: var(--spore-dust);
+    text-wrap: balance;
+  }
+
+  h2 em {
+    color: var(--old-leaf);
+    font-style: italic;
+  }
+
+  .lede {
+    max-width: 56ch;
+    color: var(--old-leaf);
+    margin: 0 0 56px;
+  }
+
+  /* --- HERO --- */
+
+  .hero {
+    padding: 120px 0 96px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .hero .meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--old-leaf);
+    margin-bottom: 80px;
+  }
+  .hero-mori {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+    margin-top: 64px;
+  }
+  .hero-mori svg { flex-shrink: 0; }
+  .hero-mori .caption {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--old-leaf);
+    max-width: 36ch;
+    line-height: 1.7;
+    padding-bottom: 8px;
+  }
+  .hero-mori .caption strong {
+    color: var(--spore-dust);
+    font-weight: 600;
+  }
+
+  /* --- PALETTE --- */
+
+  .freq-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 1px;
+    overflow: hidden;
+    margin: 0 0 48px;
+    background: var(--moss-shadow);
+  }
+  .freq-bar > span { display: block; height: 100%; }
+
+  .freq-legend {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--old-leaf);
+    margin: -32px 0 56px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .swatch {
+    display: grid;
+    grid-template-columns: 96px 1fr 140px;
+    gap: 32px;
+    align-items: center;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .swatch:last-child { border-bottom: 1px solid var(--rule); }
+  .swatch .chip {
+    height: 64px;
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 1px rgba(214, 201, 168, 0.06);
+  }
+  .swatch h3 {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    margin: 0 0 4px;
+    color: var(--spore-dust);
+  }
+  .swatch .role {
+    color: var(--old-leaf);
+    font-size: 14px;
+    margin: 0;
+    max-width: 44ch;
+  }
+  .swatch .stats {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--old-leaf);
+    text-align: right;
+    line-height: 1.9;
+  }
+  .swatch .stats .hex {
+    color: var(--spore-dust);
+    display: block;
+  }
+
+  /* --- TYPOGRAPHY PLATE --- */
+
+  .type-sample {
+    padding: 56px 0;
+  }
+  .type-sample .specimen-head {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+    color: var(--spore-dust);
+  }
+  .type-sample .specimen-latin {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--old-leaf);
+    font-size: 17px;
+    margin: 0 0 32px;
+  }
+  .type-sample .specimen-body {
+    max-width: 56ch;
+    color: var(--spore-dust);
+    margin: 0 0 40px;
+  }
+  .specimen-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0;
+  }
+  .specimen-stats > div {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .specimen-stats .label {
+    color: var(--old-leaf);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .specimen-stats .value {
+    color: var(--spore-dust);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+  }
+
+  .type-roles {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px 40px;
+    margin-top: 48px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--old-leaf);
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+  }
+  .type-roles dt { letter-spacing: 0.18em; text-transform: uppercase; }
+  .type-roles dd { margin: 0; color: var(--spore-dust); font-family: var(--display); font-size: 18px; font-style: italic; }
+
+  /* --- MORI PLATE --- */
+
+  .mori-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 32px;
+    margin-top: 16px;
+  }
+  .mori-card { text-align: center; }
+  .mori-card svg {
+    display: block;
+    margin: 0 auto 18px;
+  }
+  .mori-card .state {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--spore-dust);
+    margin: 0 0 4px;
+  }
+  .mori-card .trigger {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--old-leaf);
+    line-height: 1.7;
+  }
+
+  /* --- COMPOSITION PLATE (PHONE MOCK) --- */
+
+  .composition {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-top: 24px;
+  }
+  .phone {
+    width: 280px;
+    height: 580px;
+    background: var(--moss-shadow);
+    border-radius: 38px;
+    box-shadow: inset 0 0 0 2px rgba(214, 201, 168, 0.08),
+                0 30px 60px -20px rgba(0,0,0,0.6);
+    position: relative;
+    overflow: hidden;
+    padding: 18px;
+  }
+  .phone .screen {
+    width: 100%; height: 100%;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(91, 201, 176, 0.04), transparent 50%),
+      linear-gradient(180deg, #0E1814 0%, #0B100D 70%);
+    border-radius: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phone .notch {
+    position: absolute;
+    top: 6px; left: 50%; transform: translateX(-50%);
+    width: 90px; height: 18px;
+    background: var(--hollow-black);
+    border-radius: 0 0 12px 12px;
+    z-index: 2;
+  }
+  .phone .ui-top {
+    position: absolute;
+    top: 36px; left: 16px; right: 16px;
+    display: flex; justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--old-leaf);
+  }
+  .phone .ui-top .spores { color: var(--spore-dust); }
+  .phone .scene {
+    position: absolute;
+    inset: 0;
+  }
+  .phone .ground {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 200px;
+    background:
+      linear-gradient(180deg, transparent, rgba(61, 47, 37, 0.5) 40%, rgba(61, 47, 37, 0.8) 100%);
+  }
+  .phone .log {
+    position: absolute;
+    bottom: 110px; left: 30px; right: 30px;
+    height: 28px;
+    background:
+      linear-gradient(180deg, var(--damp-bark), #2A1F18);
+    border-radius: 14px;
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.4);
+  }
+  .phone .mori-onscreen {
+    position: absolute;
+    bottom: 24px; left: 22px;
+  }
+  .phone .ui-bottom {
+    position: absolute;
+    bottom: 16px; right: 18px;
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--spore-dust);
+    font-size: 11px;
+    text-align: right;
+    line-height: 1.3;
+    max-width: 120px;
+  }
+  .phone .ui-bottom .latin {
+    color: var(--old-leaf);
+    font-size: 10px;
+  }
+
+  .composition-notes h3 {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    margin: 0 0 16px;
+    color: var(--spore-dust);
+  }
+  .composition-notes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .composition-notes li {
+    padding: 10px 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 14px;
+    color: var(--old-leaf);
+    font-size: 14px;
+  }
+  .composition-notes li:last-child { border-bottom: 1px solid var(--rule); }
+  .composition-notes li::before {
+    content: "·";
+    color: var(--foxfire-teal);
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 700;
+  }
+  .composition-notes li strong {
+    color: var(--spore-dust);
+    font-weight: 500;
+  }
+
+  /* --- FOOTER --- */
+
+  footer {
+    margin-top: 96px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--old-leaf);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .mark {
+    color: var(--foxfire-teal);
+  }
+
+  /* --- THE ONE AMBIENT MOTION --- */
+
+  @keyframes foxfire {
+    0%, 100% { opacity: 0.55; }
+    50%      { opacity: 1.0; }
+  }
+  .pulse { animation: foxfire 2.4s ease-in-out infinite; transform-origin: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse { animation: none; opacity: 0.85; }
+  }
+
+  /* --- RESPONSIVE --- */
+
+  @media (max-width: 720px) {
+    .swatch { grid-template-columns: 64px 1fr; }
+    .swatch .stats { grid-column: 2; text-align: left; }
+    .mori-grid { grid-template-columns: repeat(2, 1fr); }
+    .composition { grid-template-columns: 1fr; justify-items: center; }
+    .specimen-stats { grid-template-columns: repeat(2, 1fr); }
+    .hero-mori { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- honeycomb pattern for Mori's cap -->
+    <pattern id="honeycomb" x="0" y="0" width="9" height="11" patternUnits="userSpaceOnUse">
+      <ellipse cx="4.5" cy="3" rx="2.8" ry="2.0" fill="#1A140F" opacity="0.55" />
+      <ellipse cx="0" cy="8" rx="2.8" ry="2.0" fill="#1A140F" opacity="0.55" />
+      <ellipse cx="9" cy="8" rx="2.8" ry="2.0" fill="#1A140F" opacity="0.55" />
+    </pattern>
+    <radialGradient id="capShade" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#5C4738" />
+      <stop offset="100%" stop-color="#2C211A" />
+    </radialGradient>
+    <radialGradient id="stipeShade" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#E8DCC2" />
+      <stop offset="100%" stop-color="#A89472" />
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5BC9B0" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#5BC9B0" stop-opacity="0" />
+    </radialGradient>
+
+    <symbol id="mori-base" viewBox="0 0 120 160">
+      <!-- subtle ground shadow -->
+      <ellipse cx="60" cy="152" rx="32" ry="3" fill="#000" opacity="0.5" />
+      <!-- stipe -->
+      <path d="M 42 96 Q 38 122 44 150 L 76 150 Q 82 122 78 96 Z" fill="url(#stipeShade)" />
+      <!-- cap -->
+      <ellipse cx="60" cy="58" rx="38" ry="48" fill="url(#capShade)" />
+      <ellipse cx="60" cy="58" rx="38" ry="48" fill="url(#honeycomb)" opacity="0.85" />
+      <!-- cap highlight -->
+      <ellipse cx="44" cy="38" rx="10" ry="14" fill="#6E5440" opacity="0.4" />
+      <!-- water drop on rim -->
+      <circle cx="92" cy="78" r="2.2" fill="#5BC9B0" opacity="0.5" />
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+
+  <section class="hero">
+    <div class="meta">
+      <span>Visual Identity / Field Guide</span>
+      <span>v0.1 — 2026.06.29</span>
+    </div>
+    <h1 class="title">Mycelia</h1>
+    <p class="latin">A field guide to the visual identity of an atmospheric idle game about real fungi, slow time, and one small morel.</p>
+
+    <div class="hero-mori">
+      <!-- watching state -->
+      <svg width="84" height="112" viewBox="0 0 120 160" aria-label="Mori, watching">
+        <use href="#mori-base" />
+        <!-- eyes: watching -->
+        <ellipse cx="52" cy="118" rx="2.8" ry="3.6" fill="#0B100D" />
+        <ellipse cx="68" cy="118" rx="2.8" ry="3.6" fill="#0B100D" />
+      </svg>
+      <p class="caption">
+        <strong>Mori</strong> — not a tutorial, not a mascot in the marketing sense. A small, ancient morel who stays in the corner of the screen and notices things. Speaks rarely. Pulses softly at a fifty-beat-per-minute heart rate when thinking.
+      </p>
+    </div>
+  </section>
+
+
+  <section class="plate">
+    <p class="eyebrow"><span>I.</span><span>Palette</span></p>
+    <h2>Eight colors, named from the world they came from.</h2>
+    <p class="lede">Two darks for ground and surface. Two earths for substrate. Two creams for type and fungal flesh. One bright accent for the night — used once, sparingly. One warning red — used almost never.</p>
+
+    <div class="freq-bar" aria-label="Color usage frequency, approximate">
+      <span style="background:#0B100D; width:50%"></span>
+      <span style="background:#1A211C; width:20%"></span>
+      <span style="background:#2A332B; width:10%"></span>
+      <span style="background:#3D2F25; width:8%"></span>
+      <span style="background:#7A6B55; width:5%"></span>
+      <span style="background:#D6C9A8; width:5%"></span>
+      <span style="background:#5BC9B0; width:1.5%"></span>
+      <span style="background:#8C2A2A; width:0.5%"></span>
+    </div>
+    <div class="freq-legend">
+      <span>↑ Used everywhere</span>
+      <span>Used rarely ↑</span>
+    </div>
+
+    <div class="swatches">
+      <div class="swatch">
+        <div class="chip" style="background:#0B100D; box-shadow: inset 0 0 0 1px rgba(214, 201, 168, 0.15);"></div>
+        <div>
+          <h3>Hollow Black</h3>
+          <p class="role">The page itself. Not pure black — green-tinted, like the dark under canopy an hour before dawn.</p>
+        </div>
+        <div class="stats">
+          <span class="hex">#0B100D</span>
+          <span>Page ground</span>
+          <span>≈ 50% usage</span>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="chip" style="background:#1A211C;"></div>
+        <div>
+          <h3>Moss Shadow</h3>
+          <p class="role">The primary surface. Slightly lifted from the page. Cards, panels, anything a finger can press on.</p>
+        </div>
+        <div class="stats">
+          <span class="hex">#1A211C</span>
+          <span>Primary surface</span>
+          <span>≈ 20%</span>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="chip" style="background:#2A332B;"></div>
+        <div>
+          <h3>Lichen</h3>
+          <p class="role">Dividers, hairlines, the edges between things. Never a fill on its own. Always a quiet outline.</p>
+        </div>
+        <div class="stats">
+          <span class="hex">#2A332B</span>
+          <span>Rules &amp; edges</span>
+          <span>≈ 10%</span>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="chip" style="background:#3D2F25;"></div>
+        <div>
+          <h3>Damp Bark</h3>
+          <p class="role">Substrate. Logs, stumps, the wet earth under the leaf litter. Where decomposition happens.</p>
+        </div>
+        <div class="stats">
+          <span class="hex">#3D2F25</span>
+          <span>Substrate / earth</span>
+          <span>≈ 8%</span>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="chip" style="background:#7A6B55;"></div>
+        <div>
+          <h3>Old Leaf</h3>
+          <p class="role">Secondary text, captions, anything that recedes. The color of last year's leaves in February.</p>
+        </div>
+        <div class="stats">
+          <span class="hex">#7A6B55</span>
+          <span>Secondary text</span>
+          <span>≈ 5%</span>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="chip" style="background:#D6C9A8;"></div>
+        <div>
+          <h3>Spore Dust</h3>
+          <p class="role">Primary text and fungal flesh. A warm cream, not white. Calibrated so it never glares at night.</p>
+        </div>
+        <div class="stats">
+          <span class="hex">#D6C9A8</span>
+          <span>Primary text</span>
+          <span>≈ 5%</span>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="chip" style="background:#5BC9B0; box-shadow: 0 0 32px rgba(91, 201, 176, 0.35), inset 0 0 0 1px rgba(214, 201, 168, 0.08);"></div>
+        <div>
+          <h3>Foxfire Teal</h3>
+          <p class="role">Bioluminescence. The single bright moment in the game. Appears only when a glowing species fruits, or when Mori notices something rare. Never in chrome.</p>
+        </div>
+        <div class="stats">
+          <span class="hex">#5BC9B0</span>
+          <span>Bioluminescent accent</span>
+          <span>≈ 1.5%</span>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="chip" style="background:#8C2A2A;"></div>
+        <div>
+          <h3>Amanita</h3>
+          <p class="role">Reserved for the rare and the forbidden. A fruiting of Amanita virosa. A poisoned harvest. Two or three appearances in the whole game.</p>
+        </div>
+        <div class="stats">
+          <span class="hex">#8C2A2A</span>
+          <span>Danger / forbidden</span>
+          <span>&lt; 0.5%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="plate">
+    <p class="eyebrow"><span>II.</span><span>Typography</span></p>
+    <h2>A naturalist's journal, set in three voices.</h2>
+    <p class="lede">A characterful italic serif for names of things. A clean humanist sans for what the player reads. A small mono for what the game measures.</p>
+
+    <div class="type-sample">
+      <h3 class="specimen-head">Bitter Oyster</h3>
+      <p class="specimen-latin">Panellus stipticus · Mycenaceae</p>
+      <p class="specimen-body">Pale brown by day. At night, the gills throw a steady green light, bright enough to read a thumbprint by. Common on wet hardwood. Found here from late summer through the first hard frost. Tastes of nothing in particular, but luminous to the eye.</p>
+
+      <div class="specimen-stats">
+        <div>
+          <span class="label">Biome</span>
+          <span class="value">Swamp</span>
+        </div>
+        <div>
+          <span class="label">Rarity</span>
+          <span class="value">Uncommon</span>
+        </div>
+        <div>
+          <span class="label">Fruit time</span>
+          <span class="value">75 min</span>
+        </div>
+        <div>
+          <span class="label">Spores</span>
+          <span class="value">+4</span>
+        </div>
+      </div>
+    </div>
+
+    <dl class="type-roles">
+      <dt>Display</dt><dd>Cochin, Hoefler Text, Baskerville, Garamond</dd>
+      <dt>Body</dt><dd style="font-style:normal; font-family: var(--body); font-size: 15px;">system-ui · -apple-system · Segoe UI</dd>
+      <dt>Specimen</dt><dd style="font-style:normal; font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em;">SF Mono · IBM Plex Mono · Consolas</dd>
+    </dl>
+  </section>
+
+
+  <section class="plate">
+    <p class="eyebrow"><span>III.</span><span>Mori</span></p>
+    <h2>Six states. Mostly silent.</h2>
+    <p class="lede">Mori never replaces the UI. The UI handles mechanics. Mori handles mood. These are the six expressions that ship in v1.0.</p>
+
+    <div class="mori-grid">
+      <div class="mori-card">
+        <svg width="100" height="140" viewBox="0 0 120 160">
+          <use href="#mori-base" />
+          <ellipse cx="52" cy="118" rx="2.8" ry="3.6" fill="#0B100D" />
+          <ellipse cx="68" cy="118" rx="2.8" ry="3.6" fill="#0B100D" />
+        </svg>
+        <p class="state">Watching</p>
+        <p class="trigger">Default state</p>
+      </div>
+
+      <div class="mori-card">
+        <svg width="100" height="140" viewBox="0 0 120 160">
+          <use href="#mori-base" transform="translate(0,-2)" />
+          <ellipse cx="52" cy="116" rx="3.4" ry="4.2" fill="#0B100D" />
+          <ellipse cx="68" cy="116" rx="3.4" ry="4.2" fill="#0B100D" />
+        </svg>
+        <p class="state">Attentive</p>
+        <p class="trigger">A rare fruiting</p>
+      </div>
+
+      <div class="mori-card">
+        <svg width="100" height="140" viewBox="0 0 120 160">
+          <use href="#mori-base" />
+          <rect x="49" y="117.6" width="6" height="1.6" fill="#0B100D" rx="0.8" />
+          <rect x="65" y="117.6" width="6" height="1.6" fill="#0B100D" rx="0.8" />
+        </svg>
+        <p class="state">Listening</p>
+        <p class="trigger">During rain</p>
+      </div>
+
+      <div class="mori-card">
+        <svg width="100" height="140" viewBox="0 0 120 160">
+          <g transform="rotate(-12 60 80)">
+            <use href="#mori-base" />
+          </g>
+          <ellipse cx="46" cy="122" rx="2.4" ry="3.0" fill="#0B100D" />
+          <ellipse cx="62" cy="122" rx="2.4" ry="3.0" fill="#0B100D" />
+        </svg>
+        <p class="state">Concerned</p>
+        <p class="trigger">Substrate failed</p>
+      </div>
+
+      <div class="mori-card">
+        <svg width="100" height="140" viewBox="0 0 120 160">
+          <circle class="pulse" cx="60" cy="58" r="52" fill="url(#glow)" />
+          <use href="#mori-base" />
+          <ellipse cx="52" cy="118" rx="2.8" ry="3.6" fill="#0B100D" />
+          <ellipse cx="68" cy="118" rx="2.8" ry="3.6" fill="#0B100D" />
+        </svg>
+        <p class="state">Pleased</p>
+        <p class="trigger">Biome unlock · tree bond</p>
+      </div>
+
+      <div class="mori-card">
+        <svg width="100" height="140" viewBox="0 0 120 160">
+          <g transform="rotate(6 60 80) translate(0,4)">
+            <use href="#mori-base" />
+          </g>
+          <path d="M 49 121 Q 52 122.5 55 121" stroke="#0B100D" stroke-width="1.4" fill="none" stroke-linecap="round" />
+          <path d="M 65 121 Q 68 122.5 71 121" stroke="#0B100D" stroke-width="1.4" fill="none" stroke-linecap="round" />
+        </svg>
+        <p class="state">Asleep</p>
+        <p class="trigger">Daytime in Swamp</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="plate">
+    <p class="eyebrow"><span>IV.</span><span>The fruiting moment</span></p>
+    <h2>Most of the screen is dark. Then one thing is not.</h2>
+    <p class="lede">The whole identity converges on a single composition: in the night biomes, a fruiting body throws Foxfire Teal into the dark. Restraint everywhere else is what makes that moment land.</p>
+
+    <div class="composition">
+      <div class="phone" role="img" aria-label="Sample composition of gameplay during a bioluminescent fruiting event">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="ui-top">
+            <span>Swamp · 02:14</span>
+            <span class="spores">▲ 1,847 spores</span>
+          </div>
+          <div class="scene">
+            <div class="ground"></div>
+            <div class="log"></div>
+            <!-- the bioluminescent fruit -->
+            <svg width="80" height="80" viewBox="0 0 100 100" style="position:absolute; bottom: 124px; left: 50%; transform: translateX(-50%);">
+              <circle class="pulse" cx="50" cy="55" r="38" fill="url(#glow)" />
+              <!-- cap -->
+              <path d="M 22 50 Q 50 18 78 50 Q 78 56 50 58 Q 22 56 22 50 Z" fill="#D6C9A8" opacity="0.9" />
+              <!-- gills (glowing under cap) -->
+              <path d="M 26 52 Q 50 64 74 52 Q 74 60 50 64 Q 26 60 26 52 Z" fill="#5BC9B0" opacity="0.8" />
+              <!-- stem -->
+              <path d="M 45 60 Q 44 76 47 86 L 53 86 Q 56 76 55 60 Z" fill="#D6C9A8" opacity="0.85" />
+            </svg>
+            <!-- Mori on the phone screen -->
+            <div class="mori-onscreen">
+              <svg width="44" height="58" viewBox="0 0 120 160">
+                <use href="#mori-base" />
+                <ellipse cx="52" cy="116" rx="3.4" ry="4.2" fill="#0B100D" />
+                <ellipse cx="68" cy="116" rx="3.4" ry="4.2" fill="#0B100D" />
+              </svg>
+            </div>
+            <div class="ui-bottom">
+              Bitter Oyster<br>
+              <span class="latin">Panellus stipticus</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="composition-notes">
+        <h3>What this composition encodes</h3>
+        <ul>
+          <li><strong>No UI chrome.</strong> The species name fades in only because something is fruiting. When nothing is happening, the screen is just the forest.</li>
+          <li><strong>One light source.</strong> The Foxfire glow is the only saturated color in the frame. Everything else is in the earth range.</li>
+          <li><strong>Mori is small.</strong> About 8% of screen height, lower-left. Visible, but not the subject.</li>
+          <li><strong>The species name is in italic display serif.</strong> The latin is in the body face beneath it. Specimen-label discipline, not game UI.</li>
+          <li><strong>The number in the top-right reads in cream.</strong> Spore count is the only persistent UI. Tabular numerals. No icon ornament.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <span>Mycelia · Centric Fiber · Compo-CF/mycelia</span>
+    <span class="mark">●</span>
+    <span>Visual identity v0.1</span>
+  </footer>
+
+</main>
