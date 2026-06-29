@@ -31,10 +31,12 @@ final class GameState {
         self.phase = GamePhase.forDate(now)
         self.nextRainAt = now.addingTimeInterval(.random(in: 0..<Double(Tunables.rainMeanIntervalSec * 2)))
         self.biomes[.forestFloor] = BiomeState(biome: .forestFloor)
-        // Seed starting inventory so the player can place something on first run
-        self.inventory[.leafLitter] = 20
-        self.inventory[.stump] = 5
-        self.inventory[.hardwoodLog] = 2
+        // Seed starting inventory. Hardwood logs are the fastest path to a
+        // first fruit (Lemon Disco + Turkey Tail both fruit from them), so
+        // we lead with those rather than the slower leaf litter.
+        self.inventory[.hardwoodLog] = 5
+        self.inventory[.stump]       = 5
+        self.inventory[.leafLitter]  = 8
     }
 
     var rainActive: Bool { rainEndsAt != nil }

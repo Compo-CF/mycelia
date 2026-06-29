@@ -29,7 +29,7 @@ targets:
         CFBundleDisplayName: Mycelia
         CFBundleShortVersionString: "1.0.0"
         # Bump before each TestFlight upload (see scripts/bump-build.sh).
-        CFBundleVersion: "1"
+        CFBundleVersion: "2"
         UILaunchScreen:
           UIColorName: "LaunchBackground"
         UISupportedInterfaceOrientations:

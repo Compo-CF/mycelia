@@ -55,10 +55,10 @@ enum FruitingEngine {
             }
 
         for s in candidates {
-            let rarityWeight = Tunables.rarityWeight[s.rarity] ?? 1.0
+            // fruit_time_minutes IS the expected wait once eligible.
+            // Rarity intentionally not applied here — see Tunables note.
             let treeBoost = hostTree?.rarityWeightMult(for: s.rarity) ?? 1.0
             let perSecond = (Tunables.fruitRollBase / Float(s.fruitTimeMinutes))
-                * rarityWeight
                 * treeBoost
             let prob = perSecond * dtSeconds
             if random() < prob {

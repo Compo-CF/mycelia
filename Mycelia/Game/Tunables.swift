@@ -20,7 +20,14 @@ enum Tunables {
     static let nodeCap: Float           = 1000
 
     // Fruiting
-    static let fruitThresholdMult: Float = 10
+    // Threshold mult was 10; lowered to 4 so common species become eligible
+    // within ~30-90 seconds of placing a single substrate. Tunable.
+    static let fruitThresholdMult: Float = 4
+    // fruit_time_minutes is the expected wait once eligible. Roll prob per
+    // second is dt / (fruit_time_min * 60). rarityWeight is intentionally
+    // NOT applied at roll time — it was double-counting with fruit_time and
+    // making legendaries take 20+ days. Rarity influence emerges from
+    // substrate/biome/threshold gating instead.
     static let fruitRollBase: Float      = 1.0 / 60.0
     static let duskGraceMult: Float      = 2.0
     static let fruitAutoReleaseSec: Int  = 86_400
